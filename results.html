@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="./caravel.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.2/localforage.min.js"></script>
+  <script defer src="./results.js"></script>
+  <title>Caravel</title>
+</head>
+
+<body class="body-content">
+  <main class="main-content">
+    <section class="hero is-info is-bold has-text-centered" id="hero-section">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1">
+            Caravel
+          </h1>
+          <h5 class="subtitle is-5">
+            Real-time transport information for Dublin Bus, Irish Rail and LUAS
+          </h5>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="tabs is-centered main-menu">
+        <ul>
+          <li id="home">
+            <a>
+              <span class="icon is-small">
+                <i class="fas fa-home" aria-hidden="true"></i>
+              </span>
+              <span>Home</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section has-text-centered">
+      <div class="tab-content">
+        <div class="tab-pane is-active">
+          <div class="columns is-gapless">
+            <div class="column"></div>
+            <div class="column is-three-quarters">
+              <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+                <ul>
+                  <li>
+                    <a id="breadcrumb-mode">Mode</a>
+                  </li>
+                  <li class="is-active">
+                    <a aria-current="page" id="breadcrumb-id">ID</a>
+                  </li>
+                </ul>
+              </nav>
+              <div id="fav-div">
+                <a class="button is-info" id="is-fav">Add to favourites</a>
+              </div>
+              <div id="bus-div" hidden>
+                <table class="table is-striped is-hoverable is-fullwidth" align="center" id="bus-table">
+                  <thead>
+                    <tr>
+                      <td>
+                        <strong>Route</strong>
+                      </td>
+                      <td>
+                        <strong>Destination</strong>
+                      </td>
+                      <td>
+                        <strong>Due</strong>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="bus-table-body">
+                  </tbody>
+                </table>
+              </div>
+              <div id="rail-div" hidden>
+                <table class="table is-striped is-hoverable is-fullwidth" align="center" id="rail-table">
+                  <thead>
+                    <tr>
+                      <td>
+                        <strong>Due</strong>
+                      </td>
+                      <td>
+                        <strong>Destination</strong>
+                      </td>
+                      <td>
+                        <strong>Late</strong>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="rail-table-body">
+                  </tbody>
+                </table>
+              </div>
+              <div id="luas-div" hidden>
+                <table class="table is-striped is-hoverable is-fullwidth" align="center" id="luas-table">
+                  <thead>
+                    <tr>
+                      <td>
+                        <strong>Direction</strong>
+                      </td>
+                      <td>
+                        <strong>Destination</strong>
+                      </td>
+                      <td>
+                        <strong>Due</strong>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="luas-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="column"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Caravel</strong> made by
+        <a href="https://nguyenhi.eu">Hieu Nguyen</a>.
+        <div>Icons made by
+          <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
+          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
+          <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        </div>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

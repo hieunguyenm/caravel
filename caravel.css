@@ -1,0 +1,32 @@
+@media only screen and (min-width: 426px) {
+  table {
+    table-layout: fixed;
+  }
+}
+
+th,
+td {
+  text-align: center !important;
+}
+
+tr {
+  cursor: pointer;
+}
+
+#hero-section {
+  cursor: pointer;
+}
+
+#fav-div {
+  padding-bottom: 20px;
+}
+
+.body-content {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}

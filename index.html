@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="./caravel.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.2/localforage.min.js"></script>
+  <script defer src="./index.js"></script>
+  <title>Caravel</title>
+</head>
+
+<body class="body-content">
+  <main class="main-content">
+    <section class="hero is-info is-bold has-text-centered" id="hero-section">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1">
+            Caravel
+          </h1>
+          <h5 class="subtitle is-5">
+            Real-time transport information for Dublin Bus, Irish Rail and LUAS
+          </h5>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="tabs is-centered main-menu" id="front-tabs">
+        <ul>
+          <li class="is-active" data-target="fav-pane" id="tab-fav">
+            <a>
+              <span class="icon is-small">
+                <i class="fas fa-star" aria-hidden="true"></i>
+              </span>
+              <span>Favourites</span>
+            </a>
+          </li>
+          <li data-target="bus-pane" id="tab-bus">
+            <a>
+              <span>Bus</span>
+            </a>
+          </li>
+          <li data-target="rail-pane" id="tab-rail">
+            <a>
+              <span>Rail</span>
+            </a>
+          </li>
+          <li data-target="luas-pane" id="tab-luas">
+            <a>
+              <span>LUAS</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section has-text-centered">
+      <div class="tab-content">
+        <div class="tab-pane is-active " id="fav-pane">
+          <div class="columns is-gapless">
+            <div class="column"></div>
+            <div class="column is-three-quarters">
+              <h4 class="title is-4">Bus</h4>
+              <table class="table is-striped is-hoverable is-fullwidth" align="center">
+                <thead>
+                  <tr>
+                    <th>Stop</th>
+                    <th>Name</th>
+                    <th>Street</th>
+                  </tr>
+                </thead>
+                <tbody id="bus-fav">
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 class="title is-4">Rail</h4>
+              <table class="table is-striped is-hoverable is-fullwidth" align="center">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                  </tr>
+                </thead>
+                <tbody id="rail-fav">
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 class="title is-4">LUAS</h4>
+              <table class="table is-striped is-hoverable is-fullwidth" align="center">
+                <thead>
+                  <tr>
+                    <th>Line</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                  </tr>
+                </thead>
+                <tbody id="luas-fav">
+                  <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column"></div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="bus-pane">
+          <div class="columns is-gapless" hidden>
+            <div class="column"></div>
+            <div class="column is-three-quarters">
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input class="input" type="text" placeholder="Search stops..." id="bus-search-input">
+                </div>
+                <div class="control">
+                  <a class="button is-info" id="bus-search-button">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </div>
+              </div>
+              <table class="table is-striped is-hoverable is-fullwidth" align="center" id="bus-table" hidden>
+                <thead>
+                  <tr>
+                    <th>Stop</th>
+                    <th>Name</th>
+                    <th>Street</th>
+                  </tr>
+                </thead>
+                <tbody id="bus-table-body">
+                </tbody>
+              </table>
+              <p id="bus-search-info"></p>
+            </div>
+            <div class="column"></div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="rail-pane">
+          <div class="columns is-gapless" hidden>
+            <div class="column"></div>
+            <div class="column is-three-quarters">
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input class="input" type="text" placeholder="Search stations..." id="rail-search-input">
+                </div>
+                <div class="control">
+                  <a class="button is-info" id="rail-search-button">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </div>
+              </div>
+              <table class="table is-striped is-hoverable is-fullwidth" align="center" id="rail-table" hidden>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                  </tr>
+                </thead>
+                <tbody id="rail-table-body">
+                </tbody>
+              </table>
+              <p id="rail-search-info"></p>
+            </div>
+            <div class="column"></div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="luas-pane">
+          <div class="columns is-gapless" hidden>
+            <div class="column"></div>
+            <div class="column is-three-quarters">
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input class="input" type="text" placeholder="Search stops..." id="luas-search-input">
+                </div>
+                <div class="control">
+                  <a class="button is-info" id="luas-search-button">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </div>
+              </div>
+              <table class="table is-striped is-hoverable is-fullwidth" align="center" id="luas-table" hidden>
+                <thead>
+                  <tr>
+                    <th>Line</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                  </tr>
+                </thead>
+                <tbody id="luas-table-body">
+                </tbody>
+              </table>
+              <p id="luas-search-info"></p>
+            </div>
+            <div class="column"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Caravel</strong> made by
+        <a href="https://nguyenhi.eu">Hieu Nguyen</a>.
+        <div>Icons made by
+          <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
+          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
+          <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        </div>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
