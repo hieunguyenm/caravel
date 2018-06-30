@@ -90,7 +90,7 @@ function fetchRailInfo(id) {
 
 function fetchLuasInfo(id) {
   let bodyString = "<tr>";
-  fetch(`https://corsproxy.nguyenhi.eu/http://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=${id}&encrypt=false`)
+  fetch(`https://corsproxy.nguyenhi.eu/https://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=${id}&encrypt=false`)
     .then(response => response.text())
     .then((data) => {
       const doc = xmlParser.parseFromString(data, "text/xml");
